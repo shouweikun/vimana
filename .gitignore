@@ -12,3 +12,5 @@ target/
 *.bak
 *.log*
 data/
+src/
+
