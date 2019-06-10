@@ -6,7 +6,9 @@ import vimana.util.Copiable
 import scala.collection.mutable
 
 /**
-  * Created by john_liu on 2019/5/30.
+  * 节点的配置信息，储存了当前raft协议中的peer成员信息
+  *
+  * @param iterable initial peers
   */
 class Configuration(
                      iterable: Iterable[PeerId] = Iterable.empty
@@ -49,6 +51,13 @@ object Configuration {
     }
   }
 
+  /**
+    * 返回c1 diff c2 ,c2 diff c1
+    *
+    * @param c1 待处理的configuration1
+    * @param c2 待处理的configuration2
+    * @return newC1，newC2
+    */
   def diff(c1: Configuration, c2: Configuration): (Configuration, Configuration) = {
     val newC1 = c1.copy()
     val newC2 = c2.copy()
